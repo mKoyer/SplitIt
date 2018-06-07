@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { EventsComponent } from './events/events.component';
 import { ExpensesComponent } from './expenses/expenses.component';
 import { AddEventComponent } from './add-event/add-event.component';
-import { AddExpanseComponent } from './add-expanse/add-expanse.component';
+import { AddExpenseComponent } from './add-expense/add-expense.component';
 import { AppRoutingModule } from './/app-routing.module';
 
 @NgModule({
@@ -14,7 +14,7 @@ import { AppRoutingModule } from './/app-routing.module';
     EventsComponent,
     ExpensesComponent,
     AddEventComponent,
-    AddExpanseComponent
+    AddExpenseComponent
   ],
   imports: [
     BrowserModule,
