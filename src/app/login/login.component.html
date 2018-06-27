@@ -1,0 +1,15 @@
+<div class="login-container">
+  <div layout="row" layout-align="center center">
+    <div class="logo" layout="row" layout-align="center center">
+      <app-logo></app-logo>
+    </div>
+    <div class="login-row">
+      <input [(ngModel)]="user.name" placeholder="name">
+    </div>
+    <div class="password-row">
+      <input type="password" [(ngModel)]="user.password" placeholder="password">
+    </div>
+    <input class="login-btn" type="button" (click)="onSubmit()" value="Login">
+    <input class="login-btn" type="button" (click)="onRegister()" value="Register">
+  </div>
+</div>

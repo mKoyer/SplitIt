@@ -1,8 +1,9 @@
 import {Currency} from './currency';
 
-export class Expanse {
+export class Expense {
   id: number;
   name: string;
   value: number;
-  currency: Currency;
+  currencyId: number;
+  eventId: number;
 }
