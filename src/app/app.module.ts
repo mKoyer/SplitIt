@@ -10,6 +10,11 @@ import { AppRoutingModule } from './/app-routing.module';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { LogoComponent } from './logo/logo.component';
+import { MessagesComponent } from './messages/messages.component';
+import {HttpClientModule, HttpClient} from '@angular/common/http';
+import {HttpModule} from '@angular/http';
+import {AuthService} from './services/auth.service';
+import {AuthGuard} from './services/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -19,14 +24,17 @@ import { LogoComponent } from './logo/logo.component';
     AddEventComponent,
     AddExpenseComponent,
     LoginComponent,
-    LogoComponent
+    LogoComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

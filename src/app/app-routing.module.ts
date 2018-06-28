@@ -5,12 +5,13 @@ import {ExpensesComponent} from './expenses/expenses.component';
 import {AddExpenseComponent} from './add-expense/add-expense.component';
 import {AddEventComponent} from './add-event/add-event.component';
 import {LoginComponent} from './login/login.component';
+import {AuthGuard} from './services/auth-guard.service';
 
 const routes: Routes = [
-  {path: 'events', component: EventsComponent },
-  {path: 'addevent', component: AddEventComponent},
-  {path: 'addexpense', component: AddExpenseComponent},
-  {path: 'expenses/:id', component: ExpensesComponent},
+  {path: 'events', component: EventsComponent, canActivate: [AuthGuard]},
+  {path: 'addevent', component: AddEventComponent, canActivate: [AuthGuard]},
+  {path: 'addexpense', component: AddExpenseComponent, canActivate: [AuthGuard]},
+  {path: 'expenses/:id', component: ExpensesComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: '', redirectTo: '/login', pathMatch: 'full'}
 ];
