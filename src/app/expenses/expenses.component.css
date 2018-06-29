@@ -1,0 +1,92 @@
+.expense {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+}
+
+.expense li {
+  position: relative;
+  cursor: pointer;
+  background-color: #EEE;
+  margin: .5em;
+  padding: .3em 0;
+  height: 2em;
+  font-family: monospace;
+  font-size: large;
+  border-radius: 4px;
+  text-align: left;
+}
+
+.expense li:hover {
+  color: #607D8B;
+  background-color: #DDD;
+  left: .1em;
+}
+
+.expense a:hover {
+  color:#607D8B;
+}
+
+.expense .item {
+  display: inline-block;
+  font-size: large;
+  color: white;
+  padding: 0.8em 0.7em 0 0.7em;
+  line-height: 1em;
+  position: relative;
+  left: 1px;
+  top: -4px;
+  height: 1.7em;
+  text-align: center;
+  border-radius: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.owner-item {
+  background-color: #00bc4f;
+}
+.other-item {
+  background-color: #0071bc;
+}
+
+.user, .amount{
+  color: rgba(46,49,46,0.78);
+  font-size: medium;
+  margin-left: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.name-container {
+  display: inline-flex;
+  min-width: calc(100% - 8em);
+  max-width: calc(100% - 8em);
+}
+
+.detail-container {
+  text-align: right;
+  flex-direction: column;
+  vertical-align: top;
+  padding: 0 1em 1em 1em;
+  display: inline-flex;
+  flex-grow: 10000;
+  flex-basis: 6em;
+  overflow: hidden;
+}
+
+.expense-container {
+  display: flex;
+}
+.summary, .summary-amount{
+  color: white;
+  margin-left: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  font-family: monospace;
+  font-size: large;
+}
+

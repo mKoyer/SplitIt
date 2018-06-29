@@ -1,3 +1,18 @@
-<p>
-  expenses works!
-</p>
+<ul class="expense">
+  <li *ngFor="let expense of expenses">
+    <div class="expense-container">
+      <div class="name-container">
+        <span [ngClass]="getStyle(expense)" class="item">{{expense.name}}</span>
+      </div>
+      <div class="detail-container">
+        <span class="user">{{getUserName(expense)}}</span>
+        <span class="amount">{{expense.value}} {{getExpenseCurrency(expense)}}</span>
+      </div>
+    </div>
+  </li>
+</ul>
+
+<div class="summary-container">
+  <span class="summary">SUMMARY:</span>
+  <span class="summary-amount">{{getExpensesSummary()}} {{getCurrency()}}</span>
+</div>

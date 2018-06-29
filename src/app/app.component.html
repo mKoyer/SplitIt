@@ -1,6 +1,9 @@
 <div class="background-container">
   <div class="main-container">
-    <button class="logout-btn" (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>
+    <div class="user-panel" *ngIf="authService.isLoggedIn">
+      <p class="welcome-user">Welcome <span>{{authService.user.name}}</span></p>
+      <button class="logout-btn" (click)="logout()">Logout</button>
+    </div>
     <router-outlet></router-outlet>
     <app-messages></app-messages>
   </div>

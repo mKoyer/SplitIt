@@ -15,6 +15,7 @@ import {HttpClientModule, HttpClient} from '@angular/common/http';
 import {HttpModule} from '@angular/http';
 import {AuthService} from './services/auth.service';
 import {AuthGuard} from './services/auth-guard.service';
+import {ArraySortPipe} from './common/sortPipe';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {AuthGuard} from './services/auth-guard.service';
     AddExpenseComponent,
     LoginComponent,
     LogoComponent,
-    MessagesComponent
+    MessagesComponent,
+    ArraySortPipe
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,13 @@
 <ul class="event">
-  <li *ngFor="let event of events">
-    <span class="item">{{event.name}}</span>
+  <li *ngFor="let event of events | sortBy: 'eventStatus'">
+    <a class="event-container" (click)="onEventSelected(event)">
+      <div class="name-container">
+        <span [ngClass]="getStyle(event.eventStatus)" class="item">{{event.name}}</span>
+      </div>
+      <div class="summary-container">
+        <span class="summary">SUMMARY:</span>
+        <span class="amount">{{getExpensesSummary(event)}} {{getCurrency(event)}}</span>
+      </div>
+    </a>
   </li>
 </ul>
