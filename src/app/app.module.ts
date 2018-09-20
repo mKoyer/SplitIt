@@ -16,6 +16,11 @@ import {HttpModule} from '@angular/http';
 import {AuthService} from './services/auth.service';
 import {AuthGuard} from './services/auth-guard.service';
 import {ArraySortPipe} from './common/sortPipe';
+import {AngularFireModule} from 'angularfire2';
+import {AngularFireDatabaseModule} from 'angularfire2/database';
+import {environment} from '../environments/environment';
+import {EventsService} from './services/events.service';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -34,9 +39,12 @@ import {ArraySortPipe} from './common/sortPipe';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    HttpModule
+    HttpModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    ReactiveFormsModule
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, AuthGuard, EventsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

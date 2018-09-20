@@ -37,9 +37,8 @@ export class ExpensesComponent implements OnInit {
   }
   getEvent(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.eventService.getEvents()
-      .subscribe(ev => this.event = ev.find( e => e.id === id));
-  }
+    this.eventService.getEvents('/events'); }
+
   getExpenses(): void {
     this.expensesService.getEventExpanses(this.event.id)
       .subscribe(expenses => this.expenses = expenses);

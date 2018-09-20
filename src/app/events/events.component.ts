@@ -6,7 +6,7 @@ import {MessageService} from '../services/message.service';
 import {ExpansesService} from '../services/expanses.service';
 import {forEach} from '@angular/router/src/utils/collection';
 import {Expense} from '../common/expanse';
-import {of} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {CurrencyCalculator} from '../common/currencyCalculator';
 import {CurrencyService} from '../services/currency.service';
 import {Currency} from '../common/currency';
@@ -19,6 +19,7 @@ import {Router} from '@angular/router';
 })
 export class EventsComponent implements OnInit {
 
+  public event: Observable<any[]>;
   events: EventItem[];
   constructor(private eventService: EventsService,
               private auth: AuthService,
@@ -28,13 +29,11 @@ export class EventsComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
-    this.getEvents();
+    this.event = this.getEvents('/events');
   }
 
-  getEvents(): void {
-    this.eventService.getEvents()
-      .subscribe(events => this.events = events.
-        filter(e => (e.ownerId === this.auth.user.id) || e.otherUsersIds.includes(this.auth.user.id) ));
+  getEvents(path) {
+    return this.eventService.getEvents(path);
   }
   getStyle(eventStatus: EventStatus): String {
     switch (eventStatus) {
