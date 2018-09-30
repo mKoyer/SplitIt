@@ -3,7 +3,7 @@ import {EventsService} from '../services/events.service';
 import {EventItem} from '../common/eventItem';
 import {AuthService} from '../services/auth.service';
 import {MessageService} from '../services/message.service';
-import {ExpansesService} from '../services/expanses.service';
+import {ExpensesService} from '../services/expenses.service';
 import {forEach} from '@angular/router/src/utils/collection';
 import {Expense} from '../common/expanse';
 import {of} from 'rxjs';
@@ -23,7 +23,7 @@ export class EventsComponent implements OnInit {
   constructor(private eventService: EventsService,
               private auth: AuthService,
               private messages: MessageService,
-              private expensesService: ExpansesService,
+              private expensesService: ExpensesService,
               private currencyService: CurrencyService,
               private router: Router) { }
 
@@ -51,7 +51,7 @@ export class EventsComponent implements OnInit {
     let sum  = 0.0;
     let expenses: Expense[];
     const currencyCalc = new CurrencyCalculator(this.currencyService);
-    this.expensesService.getEventExpanses(event.id).subscribe(exps => expenses = exps);
+    this.expensesService.getEventExpenses(/*event.id*/).subscribe(exps => expenses = exps);
     if (expenses != null) {
       for (const expense of expenses) {
         sum += currencyCalc.calculate(expense.value, expense.currencyId, event.currencyId);

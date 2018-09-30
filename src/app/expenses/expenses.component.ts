@@ -6,7 +6,7 @@ import {CurrencyCalculator} from '../common/currencyCalculator';
 import {AuthService} from '../services/auth.service';
 import {Currency} from '../common/currency';
 import {EventItem} from '../common/eventItem';
-import {ExpansesService} from '../services/expanses.service';
+import {ExpensesService} from '../services/expenses.service';
 import {CurrencyService} from '../services/currency.service';
 import {MessageService} from '../services/message.service';
 import {UsersService} from '../services/users.service';
@@ -25,7 +25,7 @@ export class ExpensesComponent implements OnInit {
   constructor(private eventService: EventsService,
               private auth: AuthService,
               private messages: MessageService,
-              private expensesService: ExpansesService,
+              private expensesService: ExpensesService,
               private currencyService: CurrencyService,
               private router: Router,
               private route: ActivatedRoute,
@@ -37,11 +37,11 @@ export class ExpensesComponent implements OnInit {
   }
   getEvent(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.eventService.getEvents()
-      .subscribe(ev => this.event = ev.find( e => e.id === id));
+    this.eventService.getEvent(id)
+      .subscribe(event => this.event = event);
   }
   getExpenses(): void {
-    this.expensesService.getEventExpanses(this.event.id)
+    this.expensesService.getEventExpenses(/*this.event.id*/)
       .subscribe(expenses => this.expenses = expenses);
   }
   getStyle(expense: Expense): String {

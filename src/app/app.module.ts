@@ -16,6 +16,8 @@ import {HttpModule} from '@angular/http';
 import {AuthService} from './services/auth.service';
 import {AuthGuard} from './services/auth-guard.service';
 import {ArraySortPipe} from './common/sortPipe';
+import {InMemoryDataService} from './in-memory-data.service';
+import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,10 @@ import {ArraySortPipe} from './common/sortPipe';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    HttpModule
+    HttpModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, {dataEncapsulation: false}
+    )
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
