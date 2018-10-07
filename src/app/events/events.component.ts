@@ -20,6 +20,7 @@ import {Router} from '@angular/router';
 export class EventsComponent implements OnInit {
 
   events: EventItem[];
+  expenses: Expense[];
   constructor(private eventService: EventsService,
               private auth: AuthService,
               private messages: MessageService,

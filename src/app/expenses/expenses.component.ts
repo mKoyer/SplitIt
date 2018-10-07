@@ -42,7 +42,7 @@ export class ExpensesComponent implements OnInit {
   }
   getExpenses(): void {
     this.expensesService.getEventExpenses(/*this.event.id*/)
-      .subscribe(expenses => this.expenses = expenses);
+      .subscribe(expenses => this.expenses = expenses.filter(expense => expense.eventId === this.event.id));
   }
   getStyle(expense: Expense): String {
     switch (expense.userId === this.auth.user.id) {

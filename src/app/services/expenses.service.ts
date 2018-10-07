@@ -28,6 +28,7 @@ export class ExpensesService {
     return this.http.get<Expense[]>(this.expensesUrl)
       .pipe(
         catchError(this.handleError('getEventExpenses', []))
+
       );
   }
   getExpense(id: number): Observable<Expense> {
