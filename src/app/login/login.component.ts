@@ -1,10 +1,17 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {UsersService} from '../services/users.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import { Location } from '@angular/common';
 import {User} from '../common/user';
 import {MessageService} from '../services/message.service';
 import {AuthService} from '../services/auth.service';
+import {MatDialog} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
+
+export interface DialogData {
+  username: string;
+  password: string;
+}
 
 @Component({
   selector: 'app-login',
@@ -14,12 +21,15 @@ import {AuthService} from '../services/auth.service';
 export class LoginComponent implements OnInit {
   user: User;
   originalUser: User;
+  newUsername: string;
+  newPassword: string;
   constructor(
     private userService: UsersService,
     private route: ActivatedRoute,
     private location: Location,
     private messageService: MessageService,
     public authService: AuthService,
+    public dialog: MatDialog,
     public router: Router) { }
 
   ngOnInit() {
@@ -70,5 +80,31 @@ export class LoginComponent implements OnInit {
   }
 
   onRegister(): void {
+    const dialogRef = this.dialog.open(RegisterDialogComponent, {
+      width: '250px',
+      data: {password: this.newPassword, username: this.newUsername}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.newUsername = result.username;
+      this.newPassword = result.password;
+      // this.userService.addUser(this.newUsername, this.newPassword);
+    });
   }
+}
+@Component({
+  selector: 'app-register',
+  templateUrl: 'register.html',
+})
+export class RegisterDialogComponent {
+
+  constructor(
+    public dialogRef: MatDialogRef<RegisterDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
 }

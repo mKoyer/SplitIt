@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>Registration</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.username" placeholder="Username">
+  </mat-form-field>
+  <mat-form-field>
+    <input type="password" matInput [(ngModel)]="data.password" placeholder="Password">
+  </mat-form-field>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Register</button>
+</div>
